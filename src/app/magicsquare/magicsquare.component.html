@@ -1,0 +1,63 @@
+<p>Magic Square</p>
+<table>
+      <tr>
+        <td *ngFor="let value of [0,1,2]"><input [(ngModel)]="values[value]" type="number"></td>
+      </tr>
+      <tr>
+        <td *ngFor="let value of [3,4,5]"><input [(ngModel)]="values[value]" type="number"></td>
+      </tr>
+      <tr>
+        <td *ngFor="let value of [6,7,8]"><input [(ngModel)]="values[value]" type="number"></td>
+      </tr>
+</table>
+
+<div  *ngIf="showResult == true" style="padding-top: 10px ;">
+    <table>
+        <tr>
+          <td *ngFor="let magicSquareValue of [0,1,2]"><input disabled="true" [(ngModel)]="magicSquareValues[magicSquareValue]" type="number"></td>
+        </tr>
+        <tr>
+          <td *ngFor="let magicSquareValue of [3,4,5]"><input disabled="true" [(ngModel)]="magicSquareValues[magicSquareValue]" type="number"></td>
+        </tr>
+        <tr>
+          <td *ngFor="let magicSquareValue of [6,7,8]"><input disabled="true" [(ngModel)]="magicSquareValues[magicSquareValue]" type="number"></td>
+        </tr>
+    </table>
+    <p>Наименьшая стоимость: {{magicSquareValues[9]}}</p>
+</div>
+
+<div *ngIf="showError == true">
+    {{serverResponse}}
+</div>
+
+<div style="display: flex; flex-direction: column; width: 120px; padding-top: 10px ;">
+  <button (click)="calculate()" >Посчитать</button>
+  <button (click)="saveInputSqaure()" >Сохранить</button>
+  <button (click)="loadInputSqaure()">Загрузить</button>
+  <button (click)="saveInputSqaureToFile()">Экспортировать</button>
+  <button onclick="document.getElementById('getFile').click()">Импортировать</button>
+  <input (change)="uploadFileWithInputSquare($event)" id="getFile" width="100px"  type="file" accept=".txt" 
+  style="visibility:hidden;" >
+</div>
+
+<form>
+  <div style="padding-top: 10px ;" *ngFor="let inputArray of inputArrays; let i=index">
+    <div style="display:inline-block; position: relative; bottom: 35px;">
+        <input (change)="selectInputSquare(inputArray)" name="dzen"  value="nedzen" type="radio">
+    </div>
+    <div style="display:inline-block;">
+      <table border="1" style="border-collapse: collapse; border-color:darkgrey; border-width: 2px; "  >
+        <tr>
+          <td *ngFor="let array of inputArray | slice:0:3;" ><p  style="margin: 3px">{{array}}</p></td>
+        </tr>
+        <tr>
+          <td *ngFor="let array of inputArray | slice:3:6;" ><p  style="margin: 3px">{{array}}</p></td>
+        </tr>
+        <tr>
+          <td *ngFor="let array of inputArray | slice:6:9;" ><p  style="margin: 3px">{{array}}</p></td>
+        </tr>
+    </table>
+    </div >
+    <hr align="left" size="2" width="100px">
+  </div>
+</form>  

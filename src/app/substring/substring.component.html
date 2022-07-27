@@ -1,0 +1,31 @@
+<p>Substring</p>
+
+<div style="display: flex; flex-direction: column; width: 200px; padding-top: 10px ;">
+    <input placeholder="А1" [(ngModel)]="stringArrays[0]" type="text">
+    <input placeholder="А2" style="margin-top:3px ;" [(ngModel)]="stringArrays[1]" type="text">
+</div>
+
+<div *ngIf="showResponse == true">
+    {{serverResponse}}
+</div>
+
+<div style="display: flex; flex-direction: column; width: 120px; padding-top: 10px ;">
+    <button (click)="calculate()" >Посчитать</button>
+    <button (click)="saveInputArrays()" >Сохранить</button>
+    <button (click)="loadInputArrays()">Загрузить</button>
+    <button (click)="saveInputArraysToFile()">Экспортировать</button>
+    <button onclick="document.getElementById('getFile').click()">Импортировать</button>
+    <input (change)="uploadFileWithInputArrays($event)" id="getFile" width="100px"  type="file" accept=".txt" 
+    style="visibility:hidden;" >
+</div>
+
+<div style="margin-top: 10px;" *ngFor="let inputArray of inputArrays">
+    <div style="display:inline-block; position: relative; bottom: 15px;">
+        <input (change)="selectInputArrays(inputArray)" name="dzen"  value="nedzen" type="radio">
+    </div>
+    <div style="display:inline-block;">
+        <p>A1: {{inputArray.a1}}</p>
+        <p>A2: {{inputArray.a2}}</p>
+    </div>
+    <hr align="left" size="2" width="100px">
+</div>
