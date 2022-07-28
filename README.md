@@ -1,3 +1,8 @@
+# angular-test-case-is
+Front on the Angular for a test case
+### Deploy frontend https://angular-test-case-is.herokuapp.com/
+### Deploy backend https://test-case-is.herokuapp.com/
+
 # TestCase
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
